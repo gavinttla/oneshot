@@ -1,14 +1,7 @@
 function msgAfterTimeout (msg, who, timeout) {
     return new Promise((resolve, reject) => {
-        //setTimeout(() => resolve(`${msg} Hello ${who}!`), timeout)
-        //console.log("inside promise");
-        //setTimeout(() => showme, timeout)
         setTimeout(() => resolve(`${msg} Hello ${who}!`), timeout)
     })
-}
-
-function showme(){
-    console.log('show me')
 }
 
 var mypro = msgAfterTimeout("", "Foo", 1000)
@@ -19,8 +12,10 @@ mypro.then(function(str1) {
     return msgAfterTimeout(str1, "Bar", 1000)  
 }).then(function(str2){
     console.log('here2:'+str2)
+    return msgAfterTimeout(str2, "puff", 1000)
+}).then((msg) => {
+    console.log('here3'+msg)
 })
-
 
 /*
 function msgAfterTimeout (msg, who, timeout) {
